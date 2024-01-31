@@ -35,3 +35,4 @@ func loadJson<T: Decodable>(_ filename: String) -> T {
         fatalError("Unable to parse \(filename): \(error)")
     }
 }
+

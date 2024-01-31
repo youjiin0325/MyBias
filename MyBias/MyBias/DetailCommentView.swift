@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct DetailCommentView: View {
+    @Binding var isShowingCommentView :Bool
+    var user:User
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            HStack {
+                Spacer()
+                
+                Button{
+                    isShowingCommentView = false
+                }label: {
+                    Image(systemName: "xmark")
+                        .foregroundStyle(Color(.label))
+                        .imageScale(.large)
+                        .frame(width: 44,height: 44)
+                 }
+            }
+            Text(user.name)
+            Text(user.comment)
+        }
+        .padding()
     }
 }
 
 #Preview {
-    DetailCommentView()
+    DetailCommentView(isShowingCommentView: .constant(false), user: MockData.samepleData)
 }

@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct ListTitleView: View {
+    let name: String
+    let comment:String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text(name)
+            Text(comment)
+        }
     }
 }
 
-#Preview {
-    ListTitleView()
-}
+//#Preview {
+//    ListTitleView()
+//}

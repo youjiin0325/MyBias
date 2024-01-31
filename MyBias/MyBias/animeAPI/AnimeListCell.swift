@@ -8,29 +8,25 @@
 import SwiftUI
 
 struct AnimeListCell: View {
-    let appetizer:Appetizer
+    let anime: Anime
+    let animeTag: Anime
     
     var body: some View {
-        HStack{
-            AppetizerRemoteImage(urlString: appetizer.imageURL)
-                .aspectRatio(contentMode: .fit)
-                .frame(width:120,height: 90)
-                .cornerRadius(8)
-            VStack(alignment:.leading,spacing: 5){
-                Text(appetizer.name)
-                    .font(.title2)
-                    .fontWeight(.medium)
-                //specifier: "%.2f" -> 소수점 뒤의 0의 갯수 제한?
-                Text("$\(appetizer.price, specifier: "%.2f")")
-                    .foregroundStyle(.secondary)
-                    .fontWeight(.semibold)
+
+        VStack {
+            AsyncImage(url:URL(string: anime.img)) { image in
+                image.resizable()
+                     .aspectRatio(contentMode: .fit)
+                     .frame(width:250, height: 300)
+                
+                     }placeholder: {
+                        ProgressView()
+                    }
             }
-            .padding(.leading)
-            
         }
     }
-}
 
-#Preview {
-    AnimeListCell(appetizer: MockData.sampleAppetizer)
-}
+
+//#Preview {
+//    AnimeListCell(anime: AnimeData.samepleAnime)
+//}

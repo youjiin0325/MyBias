@@ -7,10 +7,10 @@
 
 import Foundation
 
-class AnimeStore: ObservableObject{
+class AnimeStore: ObservableObject {
     @Published var animes: [Anime]
     
-    init(animes: [Anime] ) {
+    init(animes: [Anime]) {
         self.animes = animes
     }
 }
