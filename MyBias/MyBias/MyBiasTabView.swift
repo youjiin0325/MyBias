@@ -27,16 +27,17 @@ struct MyBiasTabView : View {
                     Image(systemName: "house")
                     Text("메인")
                 }
-            ComunitiesList()
+            ProfileEditingView()
                 .tabItem {
                     Image(systemName: "suit.heart")
                     Text("내 페이지")
                 }
-                
-        }.onAppear(){
-            UITabBar.appearance().backgroundColor = .mainColor
-        }
-        .accentColor(.white)
+        //}.accentColor(Color.mainColor)
+        
+//        }.onAppear(){
+//            UITabBar.appearance().backgroundColor = .mainColor
+          }
+        
     }
 }
 

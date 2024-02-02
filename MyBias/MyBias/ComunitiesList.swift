@@ -27,7 +27,7 @@ struct ComunitiesList: View {
                                 .fontWeight(.semibold) }
                                 .frame(width:320,height: 40)
                                 .padding()
-                                .background(Color.subColor)
+                                .background(Color.mainColor)
                                 .cornerRadius(5)
 
                     }.listRowSeparator(.hidden)// 리스트 라인 제거
