@@ -12,9 +12,12 @@ final class AccountViewModel: ObservableObject {
     @AppStorage("userInfo") private var userData: Data?
     
     
-    @Published var userInfo = UserInfo()
+    @Published var userInfo = UserInfo(name: "", email: "", image: nil, birthday: Date(), description: "")
+
     //에러 알림창
     @Published var alertItem : AlertItem?
+
+  
     
     func saveChanges() {
         //1. 변경사항 저장할때 이메일 형식, 폼 형식 체크
@@ -63,6 +66,4 @@ final class AccountViewModel: ObservableObject {
         return true
     }
   
-    
-    
 }

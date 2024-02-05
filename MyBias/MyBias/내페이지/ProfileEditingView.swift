@@ -12,7 +12,6 @@ struct ProfileEditingView: View {
     
     @State var showActionSheet:Bool = false
     @State var showImagePicker:Bool = false
-    @State var image: Image?
     @State var sourceType: Int = 0
     
     
@@ -31,17 +30,32 @@ struct ProfileEditingView: View {
                     Section{
  
                         VStack{
-                            image?
-                                .resizable()
-                                .clipped()
-                                .clipShape(Circle())
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 130,height: 130)
-                                .foregroundStyle(Color.mainColor)
-                                .overlay(
-                                    CameraButtonView(showActionSheet: $showActionSheet)
-                                        .offset(x:40,y: 65)
-                                )
+                            if let image = viewModel.userInfo.image {
+                                image
+                                    .resizable()
+                                    .clipped()
+                                    .clipShape(Circle())
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 130,height: 130)
+                                    .foregroundStyle(Color.mainColor)
+                                    .overlay(
+                                        CameraButtonView(showActionSheet: $showActionSheet)
+                                            .offset(x:40,y: 65)
+                                    )
+                            }else {
+                               Image("기본이미지")
+                                    .resizable()
+                                    .clipped()
+                                    .clipShape(Circle())
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 130,height: 130)
+                                    .foregroundStyle(Color.mainColor)
+                                    .overlay(
+                                        CameraButtonView(showActionSheet: $showActionSheet)
+                                            .offset(x:40,y: 65)
+                                    )
+                            }
+                            
                         }
                         .padding(.bottom,50)
                         
@@ -96,11 +110,11 @@ struct ProfileEditingView: View {
                 })
                 //isShow이 true가 되면 이미지 사진첩이 보여짐
                if showImagePicker {
-                   ImagePicker(isVisible: $showImagePicker, image: $image,sourceType: sourceType)
+                   ImagePicker(isVisible: $showImagePicker, image: $viewModel.userInfo.image, userInfo: $viewModel.userInfo ,sourceType: sourceType == 1 ? .photoLibrary : .camera)
                 }
                 
                 //Image("지브리프사")-> 기본이미지
-            }.onAppear{ self.image = Image("기본이미지")}
+                }.onAppear{ self.viewModel.userInfo}
             
             .onAppear{
             // retrieveUser적용되면 나타남
