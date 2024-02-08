@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct MainButton: View {
+    let title: LocalizedStringKey
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Text(title)
+            Image(systemName: "heart.fill")
+        } 
+        .font(.title3)
+        .foregroundStyle(Color.mainColor)
+        .frame(width:200,height: 50)
     }
 }
 
 #Preview {
-    MainButton()
+    MainButton(title: "Test Title")
 }

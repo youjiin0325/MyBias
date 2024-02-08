@@ -58,10 +58,16 @@ struct AnimationInfo: Decodable,Equatable ,Hashable{
 
 
 
-struct AnimeData{
-//    static let samepleAnime = Anime(id: 0001, name: "은혼 1기", type: "animation", img: "https://image.laftel.net/items/thumbs/big/13ab0a22-8b65-4b50-ad2a-502a308d3de5.jpg")
+struct AnimeData {
+    static let animeItem = Anime(id: 0001, name: "은혼1", img: "https://image.laftel.net/items/thumbs/big/13ab0a22-8b65-4b50-ad2a-502a308d3de5.jpg", author: [Author(id: 0001, name: "하야오")], tag: [TagInfo(id: 0111, name: "동양풍")], animation_info: AnimationInfo(air_year_quarter: "2015"), avg_rating: 2.5)
     
-//    static let sameple = Anime(id: 0001, name: "은혼 1기", img: "https://image.laftel.net/items/thumbs/big/13ab0a22-8b65-4b50-ad2a-502a308d3de5.jpg", type: "animation", isAdult: true, author: [Author(name: "미야자키 하야오")], tag: [TagInfo(type: "동양풍")], animationInfo: AnimationInfo(originalWriter: [Author(name: "미야자키 하야오")], created: "2024", season: "4기", originalAirTime: "2023.12"), avgRating: 9.5, tagInfo: Anime.TagInfo)
+    static let animeTwo = Anime(id: 0002, name: "은혼2", img: "https://image.laftel.net/items/thumbs/big/13ab0a22-8b65-4b50-ad2a-502a308d3de5.jpg", author: [Author(id: 0001, name: "하야오")], tag: [TagInfo(id: 0111, name: "동양풍")], animation_info: AnimationInfo(air_year_quarter: "2015"), avg_rating: 2.5)
+    
+    static let animethree = Anime(id: 0003, name: "은혼3", img: "https://image.laftel.net/items/thumbs/big/13ab0a22-8b65-4b50-ad2a-502a308d3de5.jpg", author: [Author(id: 0001, name: "하야오")], tag: [TagInfo(id: 0111, name: "동양풍")], animation_info: AnimationInfo(air_year_quarter: "2015"), avg_rating: 2.5)
+    
+    
+    static let animeItems = [animeItem,animeTwo,animethree]
+
 }
 
 

@@ -9,35 +9,22 @@
 import SwiftUI
 
 struct MyBiasTabView : View {
+    @EnvironmentObject var favourite:Favourite
     var body: some View {
         TabView{
             ComunitiesList()
-                .tabItem {
-                    Image(systemName: "person.2")
-                    Text("커뮤니티")
+                .tabItem { Label("커뮤니티", systemImage: "person.2")}
                     
-                }
             AnimeListview()
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("추천/검색")
-                }
+                .tabItem { Label("추천/검색", systemImage: "magnifyingglass")}
+               
             ComunitiesList()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("메인")
-                }
-            ProfileEditingView()
-                .tabItem {
-                    Image(systemName: "suit.heart")
-                    Text("내 페이지")
-                }
-        //}.accentColor(Color.mainColor)
-        
-//        }.onAppear(){
-//            UITabBar.appearance().backgroundColor = .mainColor
+                .tabItem { Label("메인", systemImage: "house")}
+                
+            MyAccountView()
+                .tabItem { Label("내 페이지", systemImage:  "suit.heart")}
+                .badge(favourite.items.count)//뱃지 필요할 때
           }
-        
     }
 }
 

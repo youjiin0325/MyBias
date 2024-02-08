@@ -16,8 +16,7 @@ struct ProfileEditingView: View {
     
     
     var body: some View {
-    
-//            NavigationStack {
+
                 ZStack {
                 Spacer()
             
@@ -29,7 +28,7 @@ struct ProfileEditingView: View {
                     
                     Section{
  
-                        VStack{
+                        VStack(alignment:.center){
                             if let image = viewModel.userInfo.image {
                                 image
                                     .resizable()
@@ -79,7 +78,7 @@ struct ProfileEditingView: View {
                             Text("변경사항 저장")
                                 .foregroundStyle(Color.white)
                                 .fontWeight(.bold)
-                                .frame(width: 120,height: 50)
+                                .frame(width: 150,height: 50)
                                 .background(Color.mainColor)
                                 .cornerRadius(5)
                         }
@@ -88,7 +87,7 @@ struct ProfileEditingView: View {
                 }.listRowSeparator(.hidden)// 리스트 라인 제거
                 .scrollContentBackground(.hidden)//background 제거
                 .padding()
-                .navigationTitle("프로필 설정")
+                .navigationTitle("프로필 수정")
                 
                 .actionSheet(isPresented: $showActionSheet, content: { ()-> ActionSheet in
                     ActionSheet(title: Text("이미지를 선택하세요"),
@@ -128,7 +127,7 @@ struct ProfileEditingView: View {
             }
         }
     }
-//}
+
 
 #Preview {
     ProfileEditingView()

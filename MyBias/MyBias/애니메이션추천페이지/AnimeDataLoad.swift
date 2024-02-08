@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 
+//추천 애니메이션
 var data: [Anime] = loadJson("data.json")
 
 
