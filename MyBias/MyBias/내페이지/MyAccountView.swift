@@ -12,20 +12,13 @@ struct MyAccountView: View {
   @StateObject var favourite = Favourite() // Favourite 인스턴스 생성
     
     var body: some View {
-        VStack{
+        
+        VStack(spacing:0){
             NavigationStack{
-                Spacer()
-                Text("#Studio_Anna_zzang")
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                    .offset(x:-80)
-                
-                Spacer()
-                    .frame(height: 30)
 
                 MyAccountTitleCell()
-                    .padding()
-                
+                        
+        
                 ScrollView{
                     LazyVGrid(columns: viewModel.columns) {
                         ForEach(ExampleData.myContents) { content in
@@ -42,6 +35,7 @@ struct MyAccountView: View {
             }//NavigationStack
             
         }//VStack
+        
     }
 }
 

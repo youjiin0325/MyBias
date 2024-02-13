@@ -7,23 +7,6 @@
 
 import SwiftUI
 
-//final class Favourite:ObservableObject{
-//    @Published var items: [Anime] = []
-//    
-//    
-//    var totalCount: Int{
-//        items.count
-//    }
-//    
-//    func addFavourite(_ anime:Anime) {
-//        items.append(anime)
-//    }
-//    
-//    func deleteFavourite(at offsets:IndexSet) {
-//        items.remove(atOffsets: offsets)
-//    }
-//}
-
 final class Favourite: ObservableObject {
     @Published var items: [Anime] = []
     
