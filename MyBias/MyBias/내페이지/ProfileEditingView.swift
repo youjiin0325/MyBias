@@ -21,21 +21,16 @@ struct ProfileEditingView: View {
                 Spacer()
             
                 Form {
-                    
-                    Text(!viewModel.userInfo.name.isEmpty ? "#\(viewModel.userInfo.name)" : "Hi")
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                    
                     Section{
  
-                        VStack(alignment:.center){
+                        VStack{
                             if let image = viewModel.userInfo.image {
                                 image
                                     .resizable()
                                     .clipped()
                                     .clipShape(Circle())
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 130,height: 130)
+                                    .frame(width: 170,height: 170)
                                     .foregroundStyle(Color.mainColor)
                                     .overlay(
                                         CameraButtonView(showActionSheet: $showActionSheet)
@@ -51,38 +46,56 @@ struct ProfileEditingView: View {
                                     .foregroundStyle(Color.mainColor)
                                     .overlay(
                                         CameraButtonView(showActionSheet: $showActionSheet)
-                                            .offset(x:40,y: 65)
+                                            .offset(x:50,y: 75)
                                     )
                             }
                             
-                        }
+                        }//vstack
                         .padding(.bottom,50)
-                        
-                        TextField("이름",text: $viewModel.userInfo.name)
-                        TextField("이메일",text: $viewModel.userInfo.email)
-                                .keyboardType(.emailAddress)
-                                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        .offset(x:55)
+                        HStack{
+                            Text("이름")
+                                .fontWeight(.semibold)
+                                .padding(.trailing,40)
+                            TextField("이름을 입력하세요",text: $viewModel.userInfo.name)
+                        }
+                        HStack {
+                            Text("이메일")
+                                .fontWeight(.semibold)
+                                .padding(.trailing,25)
+                            TextField("이메일을 입력하세요",text: $viewModel.userInfo.email)
+                                    .keyboardType(.emailAddress)
+                                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                                 .disableAutocorrection(true)
-                      
+                        }
+                        HStack {
+                            Text("내이야기")
+                                .fontWeight(.semibold)
+                                .padding(.trailing,15)
+                            TextField("당신의 이야기를 들려주세요",text: $viewModel.userInfo.description)
+                                    .lineLimit(1...10)
+                                    .lineSpacing(5)
+                                //.frame(width: 300)
+                        }
+                        
                         DatePicker("생일", selection: $viewModel.userInfo.birthday, displayedComponents: .date)
-
-                        TextField("당신의 이야기를 들려주세요",text: $viewModel.userInfo.description)
-                                .lineLimit(1...10)
-                                .lineSpacing(5)
-                                .frame(width: 300)
-     
+                            .fontWeight(.semibold)
+                        
                         Button{
                             //변경사항을 저장 할때 오류가 있다면 알림창을 부르틑 트리거임
                             viewModel.saveChanges()
                         } label: {
                             Text("변경사항 저장")
-                                .foregroundStyle(Color.white)
                                 .fontWeight(.bold)
-                                .frame(width: 150,height: 50)
-                                .background(Color.mainColor)
-                                .cornerRadius(5)
-                        }
+                                .frame(width: 140,height: 40)
+
+                        }.buttonStyle(.borderedProminent)
+                        .tint(Color.mainColor)
+                        .padding(20)
+                        .offset(x:40)
+  
                     }
+                    
                     
                 }.listRowSeparator(.hidden)// 리스트 라인 제거
                 .scrollContentBackground(.hidden)//background 제거

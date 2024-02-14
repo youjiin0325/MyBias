@@ -14,8 +14,9 @@ struct ContentImageView: View {
         VStack{
             Image(content.imageName)
                 .resizable()
-                .frame(width: 130,height: 130)
+                .frame(width: 130,height: 120)
                 .aspectRatio(contentMode: .fill)
+                .cornerRadius(5)
                 
         }
     }
