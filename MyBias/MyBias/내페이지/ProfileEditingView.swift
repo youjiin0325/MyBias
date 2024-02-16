@@ -46,13 +46,13 @@ struct ProfileEditingView: View {
                                     .foregroundStyle(Color.mainColor)
                                     .overlay(
                                         CameraButtonView(showActionSheet: $showActionSheet)
-                                            .offset(x:50,y: 75)
+                                            .offset(x:30,y: 60)
                                     )
                             }
                             
                         }//vstack
                         .padding(.bottom,50)
-                        .offset(x:55)
+                        .offset(x:75)
                         HStack{
                             Text("이름")
                                 .fontWeight(.semibold)
@@ -72,10 +72,8 @@ struct ProfileEditingView: View {
                             Text("내이야기")
                                 .fontWeight(.semibold)
                                 .padding(.trailing,15)
-                            TextField("당신의 이야기를 들려주세요",text: $viewModel.userInfo.description)
-                                    .lineLimit(1...10)
-                                    .lineSpacing(5)
-                                //.frame(width: 300)
+                            TextField("당신의 이야기를 들려주세요",text: $viewModel.userInfo.description,axis: .vertical)
+                             
                         }
                         
                         DatePicker("생일", selection: $viewModel.userInfo.birthday, displayedComponents: .date)

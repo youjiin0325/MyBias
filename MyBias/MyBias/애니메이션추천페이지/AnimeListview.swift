@@ -40,6 +40,7 @@ struct AnimeListview: View {
                                         VStack{
                                             AnimeListCell(anime: anime, animeTag: anime)
                                                 .cornerRadius(10)
+                                                
                                             
                                             Text(anime.name)
                                                 .font(.system(size: 15))

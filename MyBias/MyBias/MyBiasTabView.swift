@@ -18,7 +18,7 @@ struct MyBiasTabView : View {
             AnimeListview()
                 .tabItem { Label("추천/검색", systemImage: "magnifyingglass")}
                
-            ComunitiesList()
+            HomeView()
                 .tabItem { Label("메인", systemImage: "house")}
                 
             MyAccountView()

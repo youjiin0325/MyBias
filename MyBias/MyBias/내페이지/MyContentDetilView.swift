@@ -22,8 +22,16 @@ struct MyContentDetilView: View {
                             .fontWeight(.semibold)
                             .foregroundStyle(Color.mainColor)
                             Spacer()
+                        Button {
+                            //본인 계정이면 수정 버튼 나타남
+                            
+                        } label: {
+                            Text("수정하기")
+                                .font(.system(size: 12))
+                        }.buttonStyle(.bordered)
+                            .tint(Color.mainColor)
                         
-                    }.padding(.leading)
+                    }.padding(.horizontal)
                  
                     Image(content.imageName)
                         .resizable()

@@ -11,7 +11,6 @@ final class AccountViewModel: ObservableObject {
     
     @AppStorage("userInfo") private var userData: Data?
     
-    
     @Published var userInfo = UserInfo(name: "", email: "", image: nil, birthday: Date(), description: "")
 
     //에러 알림창
