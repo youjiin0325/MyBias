@@ -17,7 +17,8 @@ struct FavouriteThingView: View {
                 VStack{
                     List{
                         ForEach(favourite.items){item in
-                         
+                    
+                            
                             NavigationLink(destination: AnimeDetailView(anime: item)) {
                                     HStack(spacing:0){
                                     AnimeListCell(anime: item, animeTag: item)

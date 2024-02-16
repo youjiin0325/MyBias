@@ -128,42 +128,34 @@ struct AnimeDetailView: View {
                         
                         Spacer()
                             .frame(height: 32)
-        
-                        //MARK: - 태그의 글자의 길이가 너무 길어 다른 태그의 영역을 침범하거나, 잘릴 때 어떻게 해결해야하지?
-//                        LazyVGrid(columns: columns) {
-//                            ForEach(matchingTags.indices, id: \.self) { index in
-//                                Text("#\(matchingTags[index])")
-//                                    .font(.system(size: 15))
-//                                    .fontWeight(.semibold)
-//                                    .foregroundStyle(Color.mainColor)
-//                                    .padding(10)
-//                                    .background(Color.gradi1)
-//                                    .cornerRadius(10)
-//                                    .frame(height:50)
-//                                    .fixedSize() // 고정된 크기로 설정하여 다른 요소에 영향을 주지 않도록 합니다.
-//                                    //.lineLimit(1) // 태그가 너무 길어질 경우 한 줄로 제한합니다.
-//                            }//.padding(5)
-//
-//                        }
-//                        .frame(maxWidth: 350, alignment: .leading)
 
                         Button {
                             print("i like this post!")
-                            //addFavourite 함수를 이용하여 이 버튼을 클릭하면 좋아요한 작품들만 Favourite에 모여짐
-                            isClicked = true
-                            favourite.addFavourite(anime)
+                            isClicked.toggle()
+                            if isClicked {
+                                favourite.addFavourite(anime)
+                                isClicked = true
+                            }else {
+                                if let index = favourite.items.firstIndex(of: anime) {
+                                    favourite.deleteFavourite(at: IndexSet(integer: index))
+                                    isClicked = false
+                                }
+                            }
+                           
+                            
                         } label: {
                            // MainButton(title: "내취향")
                             Text("내 취향 담기")
                             Image(systemName: "suit.heart.fill")
 
-                        } .foregroundStyle(Color.mainColor)
+                        } .foregroundStyle(isClicked ? Color.white : Color.mainColor)
                             .font(.system(size: 15))
                             .fontWeight(.semibold)
                             .frame(width:200,height: 40)
+                            .background(isClicked ? Color.mainColor : Color.white)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.mainColor, lineWidth: 1) )
+                                    .stroke( Color.mainColor, lineWidth: 1) )
                     }
                     Spacer()
                         .frame(height: 32)
