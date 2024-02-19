@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CommunityJPop: View {
+struct CommunityListView: View {
     @StateObject var viewModel =  CommentViewModel()
     
     var body: some View {
@@ -78,5 +78,5 @@ struct CommunityJPop: View {
 }
 
 #Preview {
-    CommunityJPop()
+    CommunityListView()
 }
